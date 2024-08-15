@@ -13,6 +13,7 @@
 
 Add in home directory file with name ".myjetwallet" and content:
 
+```
 BotExample:
   SeqServiceUrl:
   ZipkinUrl:
@@ -21,12 +22,14 @@ BotExample:
     - User
     - Password
     - IndexPrefix: jet-logs-uat
+```
 
 
 # How to run Windows
 
 Add in roo directory of your disk file with name ".myjetwallet" and content:
 
+```
 BotExample:
   SeqServiceUrl:
   ZipkinUrl:
@@ -35,4 +38,5 @@ BotExample:
     - User
     - Password
     - IndexPrefix: jet-logs-uat
+```
 

@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Service.BotExample.Grpc;
 using Service.BotExample.Grpc.Models;
 using Service.BotExample.Settings;
+using Telegram.Bot.Polling;
+using Telegram.Bot.Types.Enums;
+using Telegram.Bot;
+using Service.BotExample.Client;
 
 namespace Service.BotExample.Services
 {
@@ -26,7 +31,7 @@ namespace Service.BotExample.Services
 
             return Task.FromResult(new HelloMessage
             {
-                Message = "Hello " + request.Name
+                Message = $"Hello {request.Name} your msg was: {request.Msg}"
             });
         }
     }

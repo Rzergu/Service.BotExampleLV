@@ -7,5 +7,7 @@ namespace Service.BotExample.Grpc.Models
     {
         [DataMember(Order = 1)]
         public string Name { get; set; }
-    }
+		[DataMember(Order = 2)]
+		public string Msg { get; set; }
+	}
 }

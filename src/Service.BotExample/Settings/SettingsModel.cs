@@ -13,5 +13,8 @@ namespace Service.BotExample.Settings
 
         [YamlProperty("BotExample.ElkLogs")]
         public LogElkSettings ElkLogs { get; set; }
-    }
+
+		[YamlProperty("BotExample.BotApiKey")]
+		public string BotApiKey { get; set; }
+	}
 }

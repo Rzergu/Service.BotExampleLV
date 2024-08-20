@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Service.BotExample.Client\Service.BotExample.Client.csproj" />
     <ProjectReference Include="..\Service.BotExample.Domain\Service.BotExample.Domain.csproj" />
     <ProjectReference Include="..\Service.BotExample.Grpc\Service.BotExample.Grpc.csproj" />
   </ItemGroup>

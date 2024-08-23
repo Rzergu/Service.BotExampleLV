@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyJetWallet.Sdk.Service;
-using Service.BotExample.Domain.Interfaces.Services;
 using Service.BotExample.Services;
 
 namespace Service.BotExample
@@ -9,23 +8,21 @@ namespace Service.BotExample
     public class ApplicationLifetimeManager : ApplicationLifetimeManagerBase
     {
         private readonly ILogger<ApplicationLifetimeManager> _logger;
-        private readonly IClientService _clientService; 
-        private readonly IResponceService _responceService;
+        private readonly IClientService _client;
 
-		public ApplicationLifetimeManager(IHostApplicationLifetime appLifetime, IClientService clientService, IResponceService responceService, 
+		public ApplicationLifetimeManager(IHostApplicationLifetime appLifetime,
+                IClientService clientService,
                 ILogger<ApplicationLifetimeManager> logger)
             : base(appLifetime)
         {
             _logger = logger;
-            _clientService = clientService;
-            _responceService = responceService;
+            _client = clientService;
         }
 
         protected override void OnStarted()
         {
             _logger.LogInformation("OnStarted has been called.");
-            _clientService.StartUp();
-            _responceService.SetUpResponce();
+            _client.GetTelegramBot();
         }
 
         protected override void OnStopping()

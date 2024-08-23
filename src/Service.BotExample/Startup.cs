@@ -10,13 +10,12 @@ using MyJetWallet.Sdk.GrpcSchema;
 using MyJetWallet.Sdk.Service;
 using Prometheus;
 using ProtoBuf.Grpc.Server;
-using Service.BotExample.Grpc;
 using Service.BotExample.Modules;
 using Service.BotExample.Services;
 using SimpleTrading.BaseMetrics;
 using SimpleTrading.ServiceStatusReporterConnector;
 using Service.BotExample.Client;
-using Service.BotExample.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace Service.BotExample
 {
@@ -31,7 +30,6 @@ namespace Service.BotExample
         {
             app.ConfigureJetWallet(env, endpoints =>
             {
-                endpoints.MapGrpcSchema<HelloService, IHelloService>();
             });
         }
 
@@ -40,13 +38,6 @@ namespace Service.BotExample
             builder.ConfigureJetWallet();
             builder.RegisterModule<SettingsModule>();
             builder.RegisterModule<ServiceModule>();
-
-			var factory = new BotExampleClientFactory("http://localhost:80/");
-
-			builder.RegisterInstance(factory.GetHelloService()).As<IHelloService>().SingleInstance();
-			builder.RegisterBotExampleClient(Program.Settings.BotApiKey);
-			builder.RegisterType<ResponceService>().As<IResponceService>().SingleInstance();
-
 		}
 	}
 }
